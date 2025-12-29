@@ -37,3 +37,13 @@ If your ESP32 isn't detected. install CP210x or CH340 drivers.
 
 Plug in the ESP32 via USB.
 Open `Tools -> Ports` and select the correct COM port for your ESP32.
+
+---
+
+## Uploading
+
+1. Connect the ESP32 to the computer
+2. Select the correct `Port` under `Tools > Port`
+3. Click the `Upload` arrow.
+   > [!Note]: If you see `"Connecting..."`, you may need to hold down the `"BOOT"` button on the ESP32 until the upload starts.
+   > [!Tip]: To check the code without "uploading", click on the `"Verify"` button. 
