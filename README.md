@@ -52,16 +52,24 @@ Open `Tools -> Ports` and select the correct COM port for your ESP32.
 
 ## 📕 Resources
 
-- https://www.reddit.com/r/arduino/wiki/guides/breadboards-explained/#wiki_breadboards_explained
-- https://protosupplies.com/guide-to-solderless-breadboards/
-- https://www.reddit.com/r/arduino/wiki/guides/protecting_pc_from_overloads/#wiki_protecting_your_pc_from_overloads
+### Videos
 
+- [Importance of "Blink without Delay" - YouTube Glenn McCall](https://www.youtube.com/watch?v=MRwaiFTkw_k&list=PL3kTorZwZbkBubi2q6TNwJ4UXTaTO9Qhs)
+- [Pico Course for Beginners - Core Electronics - YouTube](https://www.youtube.com/watch?v=Ic4ExTusoTw)
+- 🌟 [New Arduino Tutorials - YouTube Paul McWhorter](https://www.youtube.com/playlist?list=PLGs0VKk2DiYw-L-RibttcvK-WBZm8WLEP)
+- [Arduino Workshop for Beginners - Core Electronics - YouTube](https://www.youtube.com/playlist?list=PLPK2l9Knytg5s2dk8V09thBmNl2g5pRSr)
+
+### References
+
+- https://docs.arduino.cc/language-reference/
+- https://www.arduinolibraries.info/
+
+- https://www.reddit.com/r/arduino/wiki/guides/breadboards-explained/#wiki_breadboards_explained
+- https://www.reddit.com/r/arduino/wiki/guides/protecting_pc_from_overloads/#wiki_protecting_your_pc_from_overloads
 - https://www.reddit.com/r/arduino/comments/1ojjsyg/just_got_my_arduino_and_am_not_sure_where_to_start/
 - https://old.reddit.com/r/PrintedCircuitBoard/wiki/books#wiki_embedded_boards
 - https://www.reddit.com/r/arduino/comments/15ywzk8/great_resources_for_learning_and_teaching/
 
-- 🌟 [New Arduino Tutorials - YouTube Paul McWhorter](https://www.youtube.com/playlist?list=PLGs0VKk2DiYw-L-RibttcvK-WBZm8WLEP)
-- [Importance of "Blink without Delay" - YouTube Glenn McCall](https://www.youtube.com/watch?v=MRwaiFTkw_k&list=PL3kTorZwZbkBubi2q6TNwJ4UXTaTO9Qhs)
+### Extras
 
-- https://docs.arduino.cc/language-reference/
-- https://www.arduinolibraries.info/
+- https://protosupplies.com/guide-to-solderless-breadboards/
