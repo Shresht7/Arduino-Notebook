@@ -26,18 +26,39 @@ void OnDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len)
 {
     memcpy(&incomingReadings, incomingData, sizeof(incomingReadings));
 
-    // Create a JSON-style string for Home Assistant
+    // Prepare the JSON payload
     char buffer[128];
     snprintf(buffer, sizeof(buffer),
-             "{\"door\": %s, \"knock\": %s, \"battery\": %.2f, \"boots\": %d}",
+             "{\"door\": %s, \"knock\": %s, \"battery\": %.2f}",
              incomingReadings.isDoorOpen ? "true" : "false",
              incomingReadings.isKnock ? "true" : "false",
-             incomingReadings.vbat,
-             incomingReadings.bootCount);
+             incomingReadings.vbat);
 
-    // Publish to MQTT
-    client.publish("home/front_door", buffer);
-    Serial.println("Published to MQTT!");
+    // Route to the correct topic based on nodeID
+    String topic = "home/sensors/";
+
+    switch (incomingReadings.nodeID)
+    {
+    case 1:
+        topic += "front_door";
+        break;
+    case 2:
+        topic += "back_door";
+        break;
+    case 3:
+        topic += "garage_window";
+        break;
+    default:
+        topic += "unknown_node";
+        break;
+    }
+
+    // 3. Publish
+    client.publish(topic.c_str(), buffer);
+    Serial.print("Data from Node ");
+    Serial.print(incomingReadings.nodeID);
+    Serial.print(" sent to topic: ");
+    Serial.println(topic);
 }
 
 // MQTT Reconnect function
