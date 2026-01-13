@@ -1,5 +1,7 @@
 # Arduino Notebook
 
+This repository is a collection of Arduino sketches for the ESP32, serving as a personal notebook and a quick reference for various hardware peripherals and programming concepts.
+
 ## Hardware
 
 - ESP32 DevKit
