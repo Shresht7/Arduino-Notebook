@@ -33,20 +33,68 @@ To tell the Arduino IDE how to talk to the ESP32:
 
 If your ESP32 isn't detected. install CP210x or CH340 drivers.
 
-### Connect ESP32 to yur PC
+### Connect ESP32 to your PC
 
 Plug in the ESP32 via USB.
 Open `Tools -> Ports` and select the correct COM port for your ESP32.
 
----
-
-## Uploading
+### Uploading a Sketch
 
 1. Connect the ESP32 to the computer
 2. Select the correct `Port` under `Tools > Port`
 3. Click the `Upload` arrow.
    > [!Note]: If you see `"Connecting..."`, you may need to hold down the `"BOOT"` button on the ESP32 until the upload starts.
    > [!Tip]: To check the code without "uploading", click on the `"Verify"` button. 
+
+---
+## PlatformIO (VS Code)
+
+These sketches can also be used with PlatformIO, a powerful extension for Visual Studio Code.
+
+### 1. Install PlatformIO
+
+1. Download and install [Visual Studio Code](https://code.visualstudio.com/).
+2. Open VS Code and go to the **Extensions** view (you can use the shortcut `Ctrl+Shift+X`).
+3. Search for `PlatformIO IDE` and click **Install**.
+4. Wait for the installation to complete, then reload VS Code if prompted.
+
+### 2. Open a Sketch
+
+The easiest way to run one of the sketches is to import it as a new PlatformIO project.
+
+1. Open VS Code.
+2. Click the **PlatformIO icon** (alien head) on the left-hand activity bar to open the PlatformIO Home screen.
+3. From the home screen, click **Import Arduino Project**.
+4. A wizard will appear:
+   - For **Select Arduino Sketch Folder**, choose a sketch from this repository (e.g., `Sketches/00_Blink`).
+   - For **Select Board**, search for and select `Espressif ESP32 Dev Module`.
+5. Click **Import**.
+
+PlatformIO will create a new project, including a `platformio.ini` configuration file, and copy the sketch into the `src` folder.
+
+### 3. Build and Upload
+
+- **Build**: Click the **Build** button (checkmark icon) in the PlatformIO toolbar at the bottom of the window to compile the code.
+- **Upload**: Connect your ESP32, and click the **Upload** button (right arrow icon) in the toolbar. PlatformIO will automatically detect the port.
+
+> [!Note]
+> If you see `Connecting...` in the terminal, you may need to hold down the `BOOT` button on your ESP32 until the upload begins.
+
+### 4. Managing Libraries
+
+If a sketch requires external libraries (like the DHT sensor or OLED screen examples), you can add them to the `platformio.ini` file using the `lib_deps` option. PlatformIO will automatically download any required libraries.
+
+Here is an example `platformio.ini` configuration:
+```ini
+[env:esp32dev]
+platform = espressif32
+board = esp32dev
+framework = arduino
+lib_deps = 
+    adafruit/DHT sensor library
+    adafruit/Adafruit GFX Library
+    adafruit/Adafruit SSD1306
+```
 
 ---
 
