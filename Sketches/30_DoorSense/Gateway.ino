@@ -1,5 +1,14 @@
 #include <esp_now.h>
 #include <WiFi.h>
+#include <PubSubClient.h>
+
+// Network Credentials
+const char *ssid = "SSID";
+const char *password = "PASSWORD";
+const char *mqtt_server = "192.168.1.XXX"; // Home Assistant IP
+
+WiFiClient espClient;
+PubSubClient client(espClient);
 
 typedef struct struct_message
 {
@@ -16,34 +25,62 @@ struct_message incomingReadings;
 void OnDataRecv(const uint8_t *mac, const uint8_t *incomingData, int len)
 {
     memcpy(&incomingReadings, incomingData, sizeof(incomingReadings));
-    Serial.println("--- NEW PACKET RECEIVED ---");
-    Serial.print("Node ID: ");
-    Serial.println(incomingReadings.nodeID);
-    Serial.print("Door Status: ");
-    Serial.println(incomingReadings.isDoorOpen ? "OPEN" : "CLOSED");
-    Serial.print("Vibration/Knock: ");
-    Serial.println(incomingReadings.isKnock ? "YES" : "NO");
-    Serial.print("Battery: ");
-    Serial.print(incomingReadings.vbat);
-    Serial.println("V");
-    Serial.print("Total Wakeups: ");
-    Serial.println(incomingReadings.bootCount);
-    Serial.println("---------------------------");
+
+    // Create a JSON-style string for Home Assistant
+    char buffer[128];
+    snprintf(buffer, sizeof(buffer),
+             "{\"door\": %s, \"knock\": %s, \"battery\": %.2f, \"boots\": %d}",
+             incomingReadings.isDoorOpen ? "true" : "false",
+             incomingReadings.isKnock ? "true" : "false",
+             incomingReadings.vbat,
+             incomingReadings.bootCount);
+
+    // Publish to MQTT
+    client.publish("home/front_door", buffer);
+    Serial.println("Published to MQTT!");
+}
+
+// MQTT Reconnect function
+void reconnect()
+{
+    while (!client.connected())
+    {
+        if (client.connect("ESP32_Gateway"))
+        {
+            client.subscribe("home/sensors/command");
+        }
+        else
+        {
+            delay(5000);
+        }
+    }
 }
 
 void setup()
 {
     Serial.begin(115200);
-    WiFi.mode(WIFI_STA);
 
-    if (esp_now_init() != ESP_OK)
+    // Connect to WiFi
+    WiFi.begin(ssid, password);
+    while (WiFi.status() != WL_CONNECTED)
     {
-        Serial.println("Error initializing ESP-NOW");
-        return;
+        delay(500);
     }
 
+    // Setup MQTT
+    client.setServer(mqtt_server, 1883);
+
+    // Init ESP-NOW
+    if (esp_now_init() != ESP_OK)
+        return;
     esp_now_register_recv_cb(esp_now_recv_cb_t(OnDataRecv));
-    Serial.println("Gateway is listening...");
 }
 
-void loop() {}
+void loop()
+{
+    if (!client.connected())
+    {
+        reconnect();
+    }
+    client.loop();
+}
