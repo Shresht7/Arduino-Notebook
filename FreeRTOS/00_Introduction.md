@@ -42,3 +42,5 @@ As you project grows, adding new features becomes easier. You can simply create 
 ## References
 
 - https://www.freertos.org/
+- [DigiKey Electronics FreeRTOS - YouTube](https://www.youtube.com/playlist?list=PLEBQazB0HUyQ4hAPU1cJED6t3DU0h34bz)
+

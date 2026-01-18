@@ -112,6 +112,7 @@ lib_deps =
 - [Pico Course for Beginners - Core Electronics - YouTube](https://www.youtube.com/watch?v=Ic4ExTusoTw)
 - 🌟 [New Arduino Tutorials - YouTube Paul McWhorter](https://www.youtube.com/playlist?list=PLGs0VKk2DiYw-L-RibttcvK-WBZm8WLEP)
 - [Arduino Workshop for Beginners - Core Electronics - YouTube](https://www.youtube.com/playlist?list=PLPK2l9Knytg5s2dk8V09thBmNl2g5pRSr)
+- [DigiKey Electronics FreeRTOS - YouTube](https://www.youtube.com/playlist?list=PLEBQazB0HUyQ4hAPU1cJED6t3DU0h34bz)
 
 ### Text
 
