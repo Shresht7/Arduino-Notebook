@@ -33,3 +33,15 @@ Each task in FreeRTOS can be in one of several states:
 - Deleted: The task is removed from memory
 
 The scheduler constantly checks these states. It only runs tasks that are in the `Ready` state.
+
+## Context Switching
+
+The scheduler performs a **context switch** whenever it changes which task is running. During a context switch, FreeRTOS saves the current task's data and loads the next task's data from memory. This process happens very quickly - usually every few milliseconds. Context switching allows multiple tasks to share the same CPU without interfering with each other. It's what makes FreeRTOS feel truly multitasking.
+
+## Preemptive Scheduling
+
+FreeRTOS uses preemptive scheduling by default. This means a higher priority task can interrupt a lower-priority one at any time. The scheduler instantly switches control to the more important task. This behaviour ensures that time-critical tasks -- like reading sensors or handling WiFi packages -- always gets priority. Lower priority tasks resume automatically once the high-priority work is done.
+
+## Task Priorities
+
+Every task has a priority level. Higher priority means higher importance. The scheduler always runs the highest-priority ready task. Higher as in numerically higher (3 > 1).
