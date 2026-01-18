@@ -44,4 +44,18 @@ FreeRTOS uses preemptive scheduling by default. This means a higher priority tas
 
 ## Task Priorities
 
-Every task has a priority level. Higher priority means higher importance. The scheduler always runs the highest-priority ready task. Higher as in numerically higher (3 > 1).
+Every task has a priority level. Higher priority means higher importance. The scheduler always runs the highest-priority ready task. Higher as in numerically higher (3 > 1). If two tasks share the same priority, the scheduler switches between them in round-robin fashion.
+
+Settings the right priorities ensures that **critical tasks** get CPU time when needed, while **background tasks** run only when the system is free.
+
+You can adjust task priorities with `vTaskPrioritySet()`.
+
+## Stack Size
+
+Each task also needs **stack memory**. This is the private space a task uses to store variables, return addresses and function calls. if the stack is too small, your program may crash or behave unpredictably.
+
+You define stack size in **words**, not bytes, when creating a task with `xTaskCreate()`. For ESP32 (32-bit architecture), one word = 4 bytes.
+
+A stack size of 2048 words (~= 8KB) is usually enough for most small tasks. Tasks with heavy computation or large local variables may need more.
+
+You can monitor stack usage with `uxTaskGetStackHighWaterMark(taskHandle)`
