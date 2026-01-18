@@ -25,7 +25,7 @@ void loop()
     Serial.println("ms");
 
     // Perform the blink
-    blink(100);
+    blink(blinkSpeed);
 }
 
 void blink(int blinkSpeed)
