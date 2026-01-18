@@ -116,6 +116,7 @@ lib_deps =
 ### Text
 
 - https://randomnerdtutorials.com/getting-started-with-esp32/
+- https://controllerstech.com/esp32/freertos-tutorials/
 
 ### References
 
