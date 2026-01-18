@@ -1,6 +1,10 @@
-# Arduino Notebook
+# Arduino with ESP32 Notebook
 
 This repository is a collection of Arduino sketches for the ESP32, serving as a personal notebook and a quick reference for various hardware peripherals and programming concepts.
+
+The ESP32 is a System on a Chip (SoC) microcontroller developed by [Espressif](https://www.espressif.com) that include Wi-Fi and Bluetooth wireless capabilities and a dual-core processor. The ESP32 can connect to a Wi-Fi network to connect to the internet (station mode); or create its own Wi-Fi network (Access Point mode) so that other devices can connect to it. It also supports Bluetooth classic and Bluetooth Low Energy (BLE).
+
+[ESP32 Datasheet](https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf)
 
 ## Hardware
 
@@ -109,6 +113,10 @@ lib_deps =
 - 🌟 [New Arduino Tutorials - YouTube Paul McWhorter](https://www.youtube.com/playlist?list=PLGs0VKk2DiYw-L-RibttcvK-WBZm8WLEP)
 - [Arduino Workshop for Beginners - Core Electronics - YouTube](https://www.youtube.com/playlist?list=PLPK2l9Knytg5s2dk8V09thBmNl2g5pRSr)
 
+### Text
+
+- https://randomnerdtutorials.com/getting-started-with-esp32/
+
 ### References
 
 - https://docs.arduino.cc/language-reference/
@@ -119,6 +127,12 @@ lib_deps =
 - https://www.reddit.com/r/arduino/comments/1ojjsyg/just_got_my_arduino_and_am_not_sure_where_to_start/
 - https://old.reddit.com/r/PrintedCircuitBoard/wiki/books#wiki_embedded_boards
 - https://www.reddit.com/r/arduino/comments/15ywzk8/great_resources_for_learning_and_teaching/
+- https://randomnerdtutorials.com/vs-code-platformio-ide-esp32-esp8266-arduino/
+- [Pinout](https://randomnerdtutorials.com/esp32-pinout-reference-gpios/)
+
+### Drivers
+
+- https://randomnerdtutorials.com/install-esp32-esp8266-usb-drivers-cp210x-windows/
 
 ### Extras
 
