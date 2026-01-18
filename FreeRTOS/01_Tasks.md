@@ -22,3 +22,14 @@ Suspends the task for a specific number of ticks (usually 1 tick = 1ms on ESP32)
 ### `vTaskDelayUntil()`
 
 Useful when you want tasks to run at a fixed, periodic interval, regardless of when the delay was called. This helps maintain precise timing, especially in sensor sampling or real-time control loops.
+
+## Task States
+
+Each task in FreeRTOS can be in one of several states:
+- Running: The task currently using the CPU
+- Ready: Task is waiting for CPU time
+- Blocked: The task is waiting for a delay or an event (like a semaphore)
+- Suspended: The task is paused until resumed
+- Deleted: The task is removed from memory
+
+The scheduler constantly checks these states. It only runs tasks that are in the `Ready` state.
